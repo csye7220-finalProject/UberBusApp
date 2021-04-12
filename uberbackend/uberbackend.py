@@ -65,6 +65,7 @@ def getOperator():
     source = request.json['source']
     destination = request.json['destination']
     date = request.json['date']
+    # quantity = request.json['quantity']
     print(type(date))
     print('Date: ', date)
     date = date.split("T")
@@ -79,6 +80,8 @@ def getOperator():
     print(query)
     if query == None:
         return jsonify({"message": "No operators found"}), 200
+    # elif query["quantity"] < 1:
+    #     return jsonify({'message': 'Requested operator has no tickets available'}), 200    
     operator = {}
     i = 0
     for x in query:
