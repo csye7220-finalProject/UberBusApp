@@ -10,7 +10,6 @@ import Navbar from "./Navbar";
 var currDate = "";
 var currTime = "";
 export default class HomePage extends Component {
-<<<<<<< HEAD
     constructor(props) {
         super(props);
         this.state = {
@@ -38,40 +37,6 @@ export default class HomePage extends Component {
         this.handleOperatorChange = this.handleOperatorChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
-=======
-  constructor(props) {
-    super(props);
-    this.state = {
-      source: "Select Source",
-      destination: "Select Destination",
-      operator: "",
-      operatorsList: [],
-      date: currDate,
-      time: 0,
-      enable: true,
-      success: "",
-      noTiketsMessage: "The Bus is full",
-      errors: {
-        source: "",
-        destination: "",
-        operator: "",
-        date: "",
-        submit: "",
-      },
-    };
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.getOperator = this.getOperator.bind(this);
-    this.handleSourceChange = this.handleSourceChange.bind(this);
-    this.handleDestinationChange = this.handleDestinationChange.bind(this);
-    this.handleOperatorChange = this.handleOperatorChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTimeChange = this.handleTimeChange.bind(this);
-  }
-
-  componentDidMount() {
-    if (localStorage.getItem("isLoggedIn") === null) {
-      this.props.history.push("/");
->>>>>>> 774cc68c99dc15d0350d4a8727ad5125cd8a2aff
     }
 
     componentDidMount() {
@@ -192,41 +157,8 @@ export default class HomePage extends Component {
         });
     }
 
-<<<<<<< HEAD
     handleDestinationChange(event) {
         if (this.state.source === "Select Source") {
-=======
-    const defaultBooking = {
-      source: "Select Source",
-      destination: "Select Destination",
-      date: "",
-      operator: "",
-    };
-    if (
-      this.state.source === defaultBooking.source ||
-      this.state.destination === defaultBooking.destination ||
-      this.state.date === defaultBooking.date ||
-      this.state.operator === defaultBooking.operator
-    ) {
-      this.setState({
-        errors: {
-          submit: "Select all the required fields",
-        },
-      });
-    } else {
-      const booking = {
-        email: localStorage.getItem("email"),
-        source: this.state.source,
-        destination: this.state.destination,
-        date: this.state.date,
-        operator: this.state.operator,
-        ride_time: this.state.time,
-      };
-      console.log(booking);
-      addbooking(booking).then((res) => {
-        if (res.status === 200) {
-          if (res.data["message"] === "Operator not available") {
->>>>>>> 774cc68c99dc15d0350d4a8727ad5125cd8a2aff
             this.setState({
                 errors: {
                     source: "Source cannot be empty",
