@@ -21,6 +21,7 @@ export default class HomePage extends Component {
       time: 0,
       enable: true,
       success: "",
+      noTiketsMessage: "The Bus is full",
       errors: {
         source: "",
         destination: "",
@@ -219,6 +220,7 @@ export default class HomePage extends Component {
         destination: this.state.destination,
         date: this.state.date,
         operator: this.state.operator,
+        ride_time: this.state.time,
       };
       console.log(booking);
       addbooking(booking).then((res) => {
