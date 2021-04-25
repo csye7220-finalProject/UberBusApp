@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: aws-auth
+    namespace: kube-system
+data:
+    mapRoles: |
+        - rolearn: arn:aws:iam::909121039405:role/terraform-eks-demo-node
+          username: system:node:{{EC2PrivateDNSName}}
+          groups:
+            - system:bootstrappers
+            - system:nodes
+        - rolearn: arn:aws:iam::909121039405:role/eks-cd-role
+          username: build
+          groups:
+            - system:masters

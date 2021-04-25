@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getbookings } from "./BookingApiCalls";
 import { deletebooking } from "./BookingApiCalls";
 import Navbar from "./Navbar";
+import "./ViewBookings.css";
 
 export default class ViewBookings extends Component {
     constructor(props) {
@@ -41,7 +42,39 @@ export default class ViewBookings extends Component {
                     this.setState({
                         success: res.data["message"],
                     });
-                    this.props.history.push("/home");
+                    // this.props.history.push("/home");
+                    const booking = {};
+                    getbookings(booking).then((res) => {
+                        if (res.status === 200) {
+                            if (res.data === null) {
+                                console.log("Test1");
+                                this.setState({
+                                    message: "",
+                                    present: false,
+                                });
+                            } else if (
+                                res.data["message"] === "No bookings found"
+                            ) {
+                                console.log("Test1");
+                                this.setState({
+                                    message: res.data["message"],
+                                    present: false,
+                                });
+                            } else {
+                                this.setState({
+                                    message: "Data Present",
+                                    bookings: res.data,
+                                    present: true,
+                                });
+                            }
+                        } else {
+                            console.log("Test2");
+                            this.setState({
+                                message: "",
+                                present: false,
+                            });
+                        }
+                    });
                 }
             } else {
                 this.setState({
@@ -73,11 +106,11 @@ export default class ViewBookings extends Component {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        table = document.getElementById("bookings");
-        tr = table.getElementsByTagName("tr");
+        table = document.getElementById("listbookings");
+        tr = table.getElementsByTagName("a");
         console.log(tr);
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            td = tr[i].getElementsByTagName("div")[1];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -140,95 +173,79 @@ export default class ViewBookings extends Component {
                         onKeyUp={this.handleSearchKeyUp}
                         placeholder="Search for names.."
                         title="Type in a operator name"
-                    />
+                    ></input>
                     {this.state.success !== "" && (
                         <span className="success">{this.state.success}</span>
                     )}
 
-                    <table id="bookings" hidden={!this.state.present}>
-                        <tbody>
-                            <tr>
-                                <th>Sr No.</th>
-                                <th>Operator</th>
-                                <th>Source</th>
-                                <th>Destination</th>
-                                <th>Date of Journey</th>
-                                <th>Actions</th>
-                            </tr>
-                            {Object.keys(this.state.bookings).map(
-                                (booking, index) => (
-                                    <tr>
-                                        <td>{index}</td>
-                                        <td
-                                            key={
+                    <div class="list-group " id="listbookings">
+                        {Object.keys(this.state.bookings).map(
+                            (booking, index) => (
+                                <a
+                                    href="#"
+                                    class="list-group-item list-group-item-action flex-column align-items-start mt-2 table-striped "
+                                >
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">
+                                            {this.state.bookings[index][
+                                                "source"
+                                            ] +
+                                                " to " +
                                                 this.state.bookings[index][
-                                                    "operator"
-                                                ]
-                                            }
+                                                    "destination"
+                                                ]}
+                                        </h5>
+                                        <button
+                                            type="button"
+                                            class="btn btn-dark"
                                             value={
                                                 this.state.bookings[index][
                                                     "operator"
-                                                ]
-                                            }
-                                        >
-                                            {
-                                                this.state.bookings[index][
-                                                    "operator"
-                                                ]
-                                            }
-                                        </td>
-                                        <td>
-                                            {
+                                                ] +
+                                                "," +
                                                 this.state.bookings[index][
                                                     "source"
-                                                ]
-                                            }
-                                        </td>
-                                        <td>
-                                            {
+                                                ] +
+                                                "," +
                                                 this.state.bookings[index][
                                                     "destination"
+                                                ] +
+                                                "," +
+                                                this.state.bookings[index][
+                                                    "date"
+                                                ] +
+                                                "," +
+                                                this.state.bookings[index][
+                                                    "bustime"
                                                 ]
                                             }
-                                        </td>
-                                        <td>
-                                            {this.state.bookings[index][
+                                            onClick={this.deleteBooking}
+                                        >
+                                            Cancel Booking
+                                        </button>
+                                    </div>
+                                    <div class="mb-1  ">
+                                        {"Operator : " +
+                                            this.state.bookings[index][
+                                                "operator"
+                                            ]}
+                                    </div>
+                                    <div class="mb-1 ">
+                                        {"Travel Date : " +
+                                            this.state.bookings[index][
                                                 "date"
                                             ].substring(0, 10)}
-                                        </td>
-                                        <td>
-                                            <button
-                                                value={
-                                                    this.state.bookings[index][
-                                                        "operator"
-                                                    ] +
-                                                    "," +
-                                                    this.state.bookings[index][
-                                                        "source"
-                                                    ] +
-                                                    "," +
-                                                    this.state.bookings[index][
-                                                        "destination"
-                                                    ] +
-                                                    "," +
-                                                    this.state.bookings[index][
-                                                        "date"
-                                                    ] +
-                                                    "," +
-                                                    this.state.bookings[index][
-                                                        "bustime"
-                                                    ]
-                                                }
-                                                onClick={this.deleteBooking}
-                                            >
-                                                Cancel Booking
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
-                            )}
-                        </tbody>
-                    </table>
+                                    </div>
+                                    <div class="mb-1 ">
+                                        {"Bus Time : " +
+                                            this.state.bookings[index][
+                                                "bustime"
+                                            ]}
+                                    </div>
+                                </a>
+                            )
+                        )}
+                    </div>
                 </div>
             </>
         );

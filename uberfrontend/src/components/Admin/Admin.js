@@ -1,14 +1,11 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import Admin from "../components/Admin/Admin";
 
-class Navbar extends Component {
+class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       show: false,
-      isAdmin: false,
-      isLoggedIn: false,
     };
     this.toggleMenu = this.toggleMenu.bind(this);
 
@@ -18,27 +15,14 @@ class Navbar extends Component {
   toggleMenu() {
     this.setState({ show: !this.state.show });
   }
-  componentDidMount() {
-    if (localStorage.fname === "admin") {
-      console.log("Inside is Admin");
-      this.setState({
-        isAdmin: true,
-      });
-    }
-    if (localStorage.isLoggedIn == true) {
-      console.log("Inside is logged in");
-      this.setState({
-        isLoggedIn: true,
-      });
-    }
-  }
   render() {
     const afterLogin = (
       <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 fixed-top">
         <div className="container-fluid">
-          <Link className="navbar-brand mr-3" to={"/addBus"}>
+          <Link className="navbar-brand mr-3" to={"/home"}>
             <img src="static/bus.png" alt="" width="50px" height="50px" />{" "}
           </Link>
+          <h3>Adminnnnnn</h3>
           <h3 className="navbar-brand mr-3"> Hi {localStorage.fname}</h3>
           <button
             type="button"
@@ -52,16 +36,19 @@ class Navbar extends Component {
             className="collapse navbar-collapse"
           >
             <div className="navbar-nav ml-auto">
-              <Link className="nav-item nav-link" to={"/view-bookings"}>
+              <Link className="nav-item nav-link" to={"/addBus"}>
+                Add a Bus
+              </Link>
+
+              <Link className="nav-item nav-link" to={"/viewBuses"}>
+                View Buses
+              </Link>
+
+              <Link className="nav-item nav-link" to={"/deleteBus"}>
+                Delete A Bus
+              </Link>
+              <Link className="nav-item nav-link" to={"/yourRides"}>
                 View Bookings
-              </Link>
-
-              <Link className="nav-item nav-link" to={"/home"}>
-                Home
-              </Link>
-
-              <Link className="nav-item nav-link" to={"/logout"}>
-                Logout
               </Link>
             </div>
           </div>
@@ -102,29 +89,47 @@ class Navbar extends Component {
 
     return (
       <>
-        {this.state.isAdmin && localStorage.isLoggedIn ? (
-          <Admin></Admin>
-        ) : localStorage.isLoggedIn ? (
-          afterLogin
-        ) : (
-          beforeLogin
-        )}
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 fixed-top">
+          <div className="container-fluid">
+            <Link className="navbar-brand mr-3" to={"/admin"}>
+              <img src="static/bus.png" alt="" width="50px" height="50px" />{" "}
+            </Link>
+            {/* <h3>Adminnnnnn</h3> */}
+            <h3 className="navbar-brand mr-3"> Hi {localStorage.fname}</h3>
+            <button
+              type="button"
+              class="navbar-toggler"
+              onClick={this.toggleMenu}
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div
+              style={
+                this.state.show ? { display: "block" } : { display: "none" }
+              }
+              className="collapse navbar-collapse"
+            >
+              <div className="navbar-nav ml-auto">
+                <Link className="nav-item nav-link" to={"/addBus"}>
+                  Add a Bus
+                </Link>
+
+                <Link className="nav-item nav-link" to={"/viewBuses"}>
+                  View Buses
+                </Link>
+                <Link className="nav-item nav-link" to={"/all-bookings"}>
+                  View Bookings
+                </Link>
+                <Link className="nav-item nav-link" to={"/logout"}>
+                  Logout
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
       </>
     );
-    // return (
-    //   <div>
-    //     {this.state.isLoggedIn && this.state.isAdmin ? (
-    //       <Admin></Admin>
-    //     ) : (
-    //       <Admin></Admin>
-    //     )}
-    //   </div>
-    // );
-
-    // {
-    //    {localStorage.isLoggedIn ? afterLogin : beforeLogin}</>;
-    // }
   }
 }
 
-export default Navbar;
+export default Admin;

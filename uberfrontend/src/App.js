@@ -7,31 +7,38 @@ import Home from "./components/HomePage";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Logout from "./components/Logout";
-import ViewBookings from "./components/ViewBookings";
+// import ViewBookings from "./components/ViewBookings";
+import ViewBookingsNew from "./components/ViewBookingsNew";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
+import Admin from "./components/Admin/Admin";
+import AddBus from "./components/Admin/AddBus";
+import GetAllBuses from "./components/Admin/GetAllBuses";
+import GetAllBookings from "./components/Admin/GetAllBookings";
 
 function App() {
-    return (
-        <div className="App">
-            <Router>
-                <Navbar />
-                <Switch>
-                    <Route exact path="/" component={Login} />
-                    <Route
-                        exact
-                        path="/view-bookings"
-                        component={ViewBookings}
-                    />
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/sign-in" component={Login} />
-                    <Route exact path="/sign-up" component={SignUp} />
-                    <Route exact path="/logout" component={Logout} />
-                    <Route path="/" component={Error} />
-                </Switch>
-            </Router>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/view-bookings" component={ViewBookingsNew} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/sign-in" component={Login} />
+          <Route exact path="/sign-up" component={SignUp} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/addBus" component={AddBus} />
+          <Route path="/viewBuses" component={GetAllBuses} />
+          <Route exact path="/all-bookings" component={GetAllBookings} />
+          {/* <Route path="/deleteBus" component={DeleteBusPage} /> */}
+          <Route exact path="/logout" component={Logout} />
+          <Route path="/" component={Error} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

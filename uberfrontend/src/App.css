@@ -1,128 +1,179 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .error {
-  color:#db2269;
-  font-size: 0.625em;
-  display: relative;
+    color: #db2269;
+    font-size: 0.625em;
+    display: relative;
 }
 
 .success {
-  color:#97db22;
-  font-size: 0.8em;
-  display: relative;
+    color: #97db22;
+    font-size: 0.8em;
+    display: relative;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 table {
-  border-spacing: 0;
-  border: 1px solid #ededed;
+    border-spacing: 0;
+    border: 1px solid #ededed;
 }
 
 table tr:last-child td {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
 table th,
 table td {
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid #ededed;
-  border-right: 1px solid #ededed;
-  position: relative;
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    position: relative;
 }
 table th:last-child,
 table td:last-child {
-  border-right: 0;
+    border-right: 0;
 }
 table tr:nth-child(even) {
-  background-color: #fafafa;
+    background-color: #fafafa;
 }
 
 table tr:nth-child(odd) {
-  background-color: #fafafa;
+    background-color: #fafafa;
 }
 
 table th::before {
-  position: absolute;
-  right: 15px;
-  top: 16px;
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+    position: absolute;
+    right: 15px;
+    top: 16px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
 }
 table th.sort-asc::before {
-  border-bottom: 5px solid #22543d;
+    border-bottom: 5px solid #22543d;
 }
 table th.sort-desc::before {
-  border-top: 5px solid #22543d;
+    border-top: 5px solid #22543d;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 .badge {
-  background-color: #9ae6b4;
-  color: #22543d;
-  margin-right: 4px;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
+    background-color: #9ae6b4;
+    color: #22543d;
+    margin-right: 4px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 input {
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  box-shadow: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: none;
 }
 
 .react-datepicker-wrapper,
 .react-datepicker__input-container,
 .react-datepicker__input-container input {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
 
+.pin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: -20px;
+    top: -40px;
+
+    border-radius: 50% 50% 50% 0;
+    border: 2px solid #fff;
+    background-color: red;
+    transform: rotate(-45deg);
+}
+
+.pin-text {
+    position: absolute;
+    left: -10px;
+    top: -35px;
+    z-index: 10;
+    color: #fff;
+    font-size: medium;
+}
+
+.mapConatiner {
+    display: block;
+    margin-top: 0em;
+    height: 400px;
+    overflow: auto;
+}
+
+.iframe-container {
+    position: relative;
+    height: 93%;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+.iframe-container > * {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.marginconatiner {
+    margin-top: 10%;
+}
