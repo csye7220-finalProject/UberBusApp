@@ -1,0 +1,14 @@
+flask
+flask-bcrypt
+flask-cors
+flask-api
+python-dotenv
+pymongo
+requests
+gunicorn
+PyJWT==2.0.1
+python-dateutil
+pytz
+dnspython
+flask_jwt_extended==4.1.0
+simplejson
