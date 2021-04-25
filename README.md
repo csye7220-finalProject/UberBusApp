@@ -112,18 +112,29 @@ Run the following commands to monitor the metrics
 Prometheus
 
 `kubectl create namespace monitoring`
+
 `kubectl create -f clusterRole.yaml`
+
 `kubectl create -f config-map.yaml`
+
 `kubectl create -f prometheus-deployment.yaml --namespace=monitoring`
+
 `kubectl get deployments --namespace=monitoring`
+
 `kubectl get deployments --all-namespaces`
+
 `kubectl create -f prometheus-service.yaml --namespace=monitoring`
+
 `kubectl get svc --namespace=monitoring`
+
 `kubectl get pods --namespace=monitoring`
 
 Grafana
 
 `kubectl create -f grafana-datasource-config.yaml`
+
 `kubectl create -f grafana-datasource-deploy.yaml`
+
 `kubectl create -f grafana-datasource-service.yaml`
+
 `kubectl get svc --namespace=monitoring`
