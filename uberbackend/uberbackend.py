@@ -563,7 +563,7 @@ def test():
 
 
 @app.route('/testHealth', methods=["GET"])
-def test():
+def testHealth():
     return "Testing Python backend Health"
 
 ##################
