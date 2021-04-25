@@ -38,3 +38,4 @@ phases:
             - echo pushing prod images to ecr...
             - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/uber-be:prod
             - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/uber-fe:prod
+            - docker push $dockerhub_username/uber-fe:prod
