@@ -20,9 +20,9 @@ class Admin extends Component {
       <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand mr-3" to={"/home"}>
-            <img src="static/bus.png" alt="" width="50px" height="50px" />{" "}
+            <img src="static/bus1.png" alt="" width="50px" height="50px" />{" "}
           </Link>
-          <h3>Adminnnnnn</h3>
+          {/* <h3>Adminnnnnn</h3> */}
           <h3 className="navbar-brand mr-3"> Hi {localStorage.fname}</h3>
           <button
             type="button"
@@ -60,7 +60,7 @@ class Admin extends Component {
       <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand mr-3" to={"/home"}>
-            <img src="static/bus.png" alt="" width="50px" height="50px" />{" "}
+            <img src="static/bus1.png" alt="" width="50px" height="50px" />{" "}
           </Link>
           <button
             type="button"
@@ -92,7 +92,7 @@ class Admin extends Component {
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 fixed-top">
           <div className="container-fluid">
             <Link className="navbar-brand mr-3" to={"/admin"}>
-              <img src="static/bus.png" alt="" width="50px" height="50px" />{" "}
+              <img src="static/bus1.png" alt="" width="50px" height="50px" />{" "}
             </Link>
             {/* <h3>Adminnnnnn</h3> */}
             <h3 className="navbar-brand mr-3"> Hi {localStorage.fname}</h3>
@@ -111,17 +111,17 @@ class Admin extends Component {
             >
               <div className="navbar-nav ml-auto">
                 <Link className="nav-item nav-link" to={"/addBus"}>
-                  Add a Bus
+                  <h4>Add Bus</h4>
                 </Link>
 
                 <Link className="nav-item nav-link" to={"/viewBuses"}>
-                  View Buses
+                  <h4>View Buses</h4>
                 </Link>
                 <Link className="nav-item nav-link" to={"/all-bookings"}>
-                  View Bookings
+                  <h4>View Bookings</h4>
                 </Link>
                 <Link className="nav-item nav-link" to={"/logout"}>
-                  Logout
+                  <h4>Logout</h4>
                 </Link>
               </div>
             </div>
