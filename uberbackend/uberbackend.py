@@ -445,9 +445,9 @@ def deletebooking():
         return jsonify({'message': 'Error in update operator quantity'}), 200
     print("Updated quantity: ", queryOp)
     if query:
-        return jsonify({"message": "Booking deletion successfully"}), 200
+        return jsonify({"message": "Booking cancelled successfully!"}), 200
     else:
-        return jsonify({"message": "Error deleting booking"}), 400
+        return jsonify({"message": "Error cancelling your booking"}), 400
 
 
 # delete bus
@@ -480,7 +480,7 @@ def deletebus():
     print("Deleted bus: ", query)
 
     if query:
-        return jsonify({"message": "Bus deletion successfully"}), 200
+        return jsonify({"message": "Bus deleted successfully!"}), 200
     else:
         return jsonify({"message": "Error deleting bus"}), 400
 
@@ -557,14 +557,14 @@ def getAllUserBookings():
     return jsonify(bookings), 200
 
 
-@app.route('/test', methods=["GET"])
+@app.route('/app/test', methods=["GET"])
 def test():
     return "Testing Python backend"
 
 
-@app.route('/testHealth', methods=["GET"])
+@app.route('/app/testHealth', methods=["GET"])
 def testHealth():
-    return "Testing Python backend Health"
+    return "Testing Python backend Health - Uber Bus App!"
 
 ##################
 # ADMINISTRATION #

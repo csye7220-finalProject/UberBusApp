@@ -5,6 +5,7 @@ import TimePicker from "react-bootstrap-time-picker";
 import "react-datepicker/dist/react-datepicker.css";
 import "rc-time-picker/assets/index.css";
 import { addBus } from "../AccessApiCalls";
+import { Alert } from "react-bootstrap";
 import moment from "moment";
 import Navbar from "../Navbar";
 import "../../App.css";
@@ -35,6 +36,9 @@ export default class AddBus extends Component {
       quantity: "",
       cost: "",
       success: "",
+      busadded: false,
+      successMessage: "",
+      placeholder: "Journey Date",
       errors: {
         busId: "",
         name: "",
@@ -55,7 +59,11 @@ export default class AddBus extends Component {
     // }
   }
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value,
+      successMessage: "",
+      busadded: false,
+    });
   };
   // handleChange(event) {
   //   this.setState({ value: event.target.value });
@@ -94,6 +102,7 @@ export default class AddBus extends Component {
   handleDateChange(value) {
     this.setState({
       date: new Date(value),
+      startDate: value,
     });
     console.log("Check");
     console.log(this.state.date);
@@ -132,6 +141,8 @@ export default class AddBus extends Component {
             bustime: "",
             quantity: "",
             cost: "",
+            busadded: true,
+            successMessage: "Bus added successfully!",
           });
           // this.props.history.push("/addBus");
           // window.location.reload();
@@ -150,7 +161,8 @@ export default class AddBus extends Component {
           setTimeout(
             () =>
               this.setState({
-                success: "Booking done successfully",
+                success: "Bus added successfully",
+                successMessage: "Bus added successfully!",
               }),
             500
           );
@@ -166,10 +178,17 @@ export default class AddBus extends Component {
         <Navbar />
         <div class="container">
           <div class="jumbotron">
+            {this.state.busadded ? (
+              <Alert className={"col-lg-12"} variant={"success"}>
+                {this.state.successMessage}
+              </Alert>
+            ) : (
+              ""
+            )}
             <form onSubmit={this.handleSubmit}>
               <h3>Admin Add Bus</h3>
               <div className="form-group">
-                <label htmlFor="ad-operator">Bus Operator</label>
+                {/* <label htmlFor="ad-operator">Bus Operator</label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -177,10 +196,12 @@ export default class AddBus extends Component {
                   name="name"
                   value={this.state.name}
                   onChange={this.handleChange}
+                  placeholder="Bus Operator"
+                  required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="ad-source">Source</label>
+                {/* <label htmlFor="ad-source">Source</label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -188,10 +209,12 @@ export default class AddBus extends Component {
                   name="source"
                   value={this.state.source}
                   onChange={this.handleChange}
+                  placeholder="Pickup Location"
+                  required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="ad-destination">Destination</label>
+                {/* <label htmlFor="ad-destination">Destination</label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -199,21 +222,25 @@ export default class AddBus extends Component {
                   name="destination"
                   value={this.state.destination}
                   onChange={this.handleChange}
+                  placeholder="Drop Location"
+                  required
                 />
               </div>
               <div className="form-group">
-                <label>Date</label>
+                {/* <label>Date</label> */}
                 <DatePicker
                   className="custom-select"
                   value={this.state.date}
                   selected={this.state.date}
                   onChange={this.handleDateChange}
+                  placeholderText={this.state.placeholder}
+                  selected={this.state.startDate}
                   minDate={moment().toDate()}
                   required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="bus-time">Bus Time</label>
+                {/* <label htmlFor="bus-time">Bus Time</label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -221,6 +248,8 @@ export default class AddBus extends Component {
                   name="bustime"
                   value={this.state.bustime}
                   onChange={this.handleChange}
+                  placeholder="Journey Time"
+                  required
                 />
               </div>
               {/* <div className="form-group">
@@ -234,20 +263,22 @@ export default class AddBus extends Component {
                 />
               </div> */}
               <div className="form-group">
-                <label htmlFor="ad-seats">Seats</label>
+                {/* <label htmlFor="ad-seats">Seats</label> */}
                 <input
                   type="number"
                   className="form-control"
                   id="ad-seats"
-                  min="15"
+                  min="0"
                   max="80"
                   name="quantity"
                   value={this.state.quantity}
                   onChange={this.handleChange}
+                  placeholder="Seats"
+                  required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="cost">Cost</label>
+                {/* <label htmlFor="cost">Cost</label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -255,6 +286,8 @@ export default class AddBus extends Component {
                   name="cost"
                   value={this.state.cost}
                   onChange={this.handleChange}
+                  placeholder="Ticket Price"
+                  required
                 />
               </div>
               <button

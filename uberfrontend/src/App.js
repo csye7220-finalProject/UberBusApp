@@ -15,6 +15,7 @@ import Admin from "./components/Admin/Admin";
 import AddBus from "./components/Admin/AddBus";
 import GetAllBuses from "./components/Admin/GetAllBuses";
 import GetAllBookings from "./components/Admin/GetAllBookings";
+import TestPython from "./components/TestPython";
 
 function App() {
   return (
@@ -25,13 +26,25 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/view-bookings" component={ViewBookingsNew} />
           <Route exact path="/home" component={Home} />
-          <Route exact path="/admin" component={Admin} />
+          {/* <Route exact path="/admin" component={Admin} /> */}
           <Route exact path="/sign-in" component={Login} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route path="/admin" component={Admin} />
           <Route path="/addBus" component={AddBus} />
           <Route path="/viewBuses" component={GetAllBuses} />
           <Route exact path="/all-bookings" component={GetAllBookings} />
+          <Route exact path="/testHealth">
+            <div
+              style={{
+                marginTop: 100,
+                color: "white",
+                fontWeight: 700,
+              }}
+            >
+              Hello from Uber Bus React App. I am healthy!
+            </div>
+          </Route>
+          <Route exact path="/testComms" component={TestPython} />
           {/* <Route path="/deleteBus" component={DeleteBusPage} /> */}
           <Route exact path="/logout" component={Logout} />
           <Route path="/" component={Error} />
