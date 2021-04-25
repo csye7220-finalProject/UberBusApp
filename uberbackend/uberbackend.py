@@ -561,6 +561,11 @@ def getAllUserBookings():
 def test():
     return "Testing Python backend"
 
+
+@app.route('/testHealth', methods=["GET"])
+def test():
+    return "Testing Python backend Health"
+
 ##################
 # ADMINISTRATION #
 ##################
