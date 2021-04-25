@@ -29,7 +29,7 @@ phases:
             - >
                 docker build \
                   -f uberfrontend/Dockerfile \
-                  -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/uber-fe:prod \
+                  -t $dockerhub_username/uber-fe:prod \
                   --build-arg NODE_ENV=production \
                   --build-arg REACT_APP_API_SERVICE_URL=$REACT_APP_API_SERVICE_URL \
                   ./uberfrontend
