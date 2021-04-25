@@ -19,7 +19,6 @@ phases:
     build:
         commands:
             - echo building dev images...
-            - docker-compose up -d --build
             - echo building prod images...
             - >
                 docker build \
