@@ -19,7 +19,7 @@ phases:
   build:
     commands:
       - echo running unit tests
-      - python -m unittest.py
+      - python -m unittest test.py
       - echo building dev images...
       - docker-compose up -d --build
       - echo building prod images...
