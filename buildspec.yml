@@ -22,6 +22,7 @@ phases:
             - pip3 install -r requirements.txt
             - echo running unit tests
             - python3 -m unittest test.py
+            - cd ..
             - echo building dev images...
             - docker-compose up -d --build
             - echo building prod images...
