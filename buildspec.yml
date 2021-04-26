@@ -18,8 +18,9 @@ phases:
           | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
+      - pip3 install -r requirements.txt
       - echo running unit tests
-      - python -m unittest test.py
+      - python3 -m unittest test.py
       - echo building dev images...
       - docker-compose up -d --build
       - echo building prod images...
