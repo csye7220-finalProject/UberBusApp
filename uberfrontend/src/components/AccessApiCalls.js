@@ -2,9 +2,9 @@ import axios from "axios";
 import { python_url } from "./url.js";
 // import { react_url } from "./url.js";
 
-const url = python_url;
+// const url = python_url;
 // const url = "/app/";
-// const url = "http://localhost:5000/app/";
+const url = "http://localhost:5000/app/";
 
 // const url = `http://${process.env.REACT_APP_IP_ADDRESS}:5000/app/`;
 
